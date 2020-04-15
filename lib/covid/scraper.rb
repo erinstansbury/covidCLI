@@ -58,14 +58,13 @@ class Scraper
 
     def self.scrape_worldwide
         doc = Nokogiri::HTML(open("https://www.worldometers.info/coronavirus"))
-        world = self.new
 
+        world = self.new
         world.confirmed = doc.css('div.maincounter-number')[0].text.strip 
         world.currently_affected = doc.css('div.panel-body div.number-table-main')[0].text 
         world.mild = doc.css('span.number-table')[0].text.strip
         world.serious = doc.css('span.number-table')[1].text.strip
     
-
         puts "There are " + "#{world.confirmed}".yellow + " confirmed Coronavirus cases.\n\n"
         puts "To drill into the confirmed cases data type 'see more',\nor type 'menu' to return to the previous menu."
         input = gets.strip.downcase
@@ -74,9 +73,12 @@ class Scraper
             puts "#{world.mild} in" + " Mild".light_magenta + " Condition"
             puts "#{world.serious} in " + "Serious".red + " Condition"
             Scraper.prompt
-        else input == "menu"
-            Scraper.prompt
+        elsif input == "menu"
+            Scraper.menu
+        else input == "exit"
+            Scraper.goodbye
         end
+
     end
 
     def self.scrape_deaths
