@@ -6,12 +6,6 @@ require 'colorize'
 class Scraper
     attr_accessor :confirmed, :currently_affected, :mild, :serious
 
-    def self.intro
-        puts "Here is your Covid19 news.".light_blue
-        puts "--------------------------"
-       
-    end
-
     def self.prompt
         puts "What other statistics would you like to view?".light_blue
         input = gets.strip.downcase

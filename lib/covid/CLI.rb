@@ -5,7 +5,9 @@ require 'colorize'
 
 class CLI
 
-    Scraper.intro
+    puts "Here is your Covid19 news.".light_blue
+    puts "--------------------------"
+
     
     Scraper.menu
     
