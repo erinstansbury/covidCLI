@@ -9,5 +9,4 @@ require_relative './covid/cli'
 
 module Covid
   class Error < StandardError; end
-  # Your code goes here...
 end

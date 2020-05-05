@@ -5,6 +5,7 @@ require 'colorize'
 
 class Scraper
 
+
     @doc = Nokogiri::HTML(open("https://www.worldometers.info/coronavirus"))
 
 
