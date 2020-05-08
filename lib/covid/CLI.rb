@@ -1,16 +1,15 @@
-require_relative "../covid/scraper.rb"
-require 'nokogiri'
-require 'colorize'
 
+class Covid::CLI
 
-class CLI
+    def self.intro
+        puts "Here is your Covid19 news.".light_blue
+        puts "--------------------------"
+        menu
+    end
 
-  
-    puts "Here is your Covid19 news.".light_blue
-    puts "--------------------------"
 
     def self.worldwide
-        confirmed = Scraper.scrape_confirmed
+        confirmed = Covid::Scraper.scrape_confirmed
         puts "There are " + "#{confirmed}".yellow + " confirmed Coronavirus cases.\n\n"
         puts "To drill into the confirmed cases data type 'see more',\nor type 'menu' to return to the previous menu."
         input = gets.strip.downcase
@@ -24,9 +23,9 @@ class CLI
     end
 
     def self.drill_down
-        current = Scraper.scrape_current
-        mild = Scraper.scrape_mild
-        serious = Scraper.scrape_serious
+        current = Covid::Scraper.scrape_current
+        mild = Covid::Scraper.scrape_mild
+        serious = Covid::Scraper.scrape_serious
             puts "\nCurrently Affected Patients:" + "#{current}".yellow
             puts "#{mild} in" + " Mild".light_magenta + " Condition"
             puts "#{serious} in " + "Serious".red + " Condition"
@@ -79,12 +78,12 @@ class CLI
     end
 
     def self.deaths
-        deaths = Scraper.scrape_deaths
+        deaths = Covid::Scraper.scrape_deaths
         puts "There are " + "#{deaths}".red + " confirmed Coronavirus related deaths.\n\n"
     end
 
     def self.recovered
-        recovered = Scraper.scrape_recovered
+        recovered = Covid::Scraper.scrape_recovered
         puts "There have been " + "#{recovered}".green + " instances of Coronavirus recoveries.\n\n"
     end
 
@@ -94,13 +93,13 @@ class CLI
 
     def self.top_ten
         puts "The top 10 countries with the most confirmed cases are:"
-        country = Scraper.scrape_countries
+        country = Covid::Countries.top
         country.each.with_index(1) do |country, i|
            puts "#{i}.".red + " #{country}"
         end
-     puts ""
+        puts ""
     end
 
-    menu
+
 end
 

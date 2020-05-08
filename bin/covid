@@ -1,4 +1,6 @@
-require "bundler/setup"
-require "covid"
+#!/usr/bin/env ruby
 
-Covid::CLI.new.call
+require_relative "../lib/environment.rb"
+
+#Covid::CLI.new.call
+Covid::CLI.intro

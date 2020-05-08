@@ -1,9 +1,9 @@
 
-require 'nokogiri'
-require 'open-uri'
-require 'colorize'
+# require 'nokogiri'
+# require 'open-uri'
+# require 'colorize'
 
-class Scraper
+class Covid::Scraper
 
 
     @doc = Nokogiri::HTML(open("https://www.worldometers.info/coronavirus"))
@@ -41,18 +41,12 @@ class Scraper
 
     def self.scrape_countries
         url = Nokogiri::HTML(open('https://www.worldometers.info/coronavirus/#countries'))
-        country = []
-        country << url.css('a.mt_a')[0].text
-        country << url.css('a.mt_a')[1].text
-        country << url.css('a.mt_a')[2].text
-        country << url.css('a.mt_a')[3].text
-        country << url.css('a.mt_a')[4].text
-        country << url.css('a.mt_a')[5].text
-        country << url.css('a.mt_a')[6].text
-        country << url.css('a.mt_a')[7].text
-        country << url.css('a.mt_a')[8].text
-        country << url.css('a.mt_a')[9].text
-        country
+
+        atags = url.css('a.mt_a')
+        countries = atags.map do |country|
+            country.text
+        end
+        countries
     end
 
 
