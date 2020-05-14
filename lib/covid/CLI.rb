@@ -15,6 +15,7 @@ class Covid::CLI
         input = gets.strip.downcase
         if input == "see more"
             drill_down
+            prompt
         elsif input == "menu"
             menu
         else input == "exit"
@@ -42,7 +43,6 @@ class Covid::CLI
     
         if input == "cases"
             worldwide
-            prompt
         elsif input == "deaths"
             deaths
             prompt
@@ -62,7 +62,6 @@ class Covid::CLI
         input = gets.strip.downcase
         if input == "cases"
             worldwide
-            prompt
         elsif input == "deaths"
             deaths
             prompt
