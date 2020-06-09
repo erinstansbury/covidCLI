@@ -2,5 +2,4 @@
 
 require_relative "../lib/environment.rb"
 
-#Covid::CLI.new.call
 Covid::CLI.intro

@@ -1,7 +1,4 @@
 
-# require 'nokogiri'
-# require 'open-uri'
-# require 'colorize'
 
 class Covid::Scraper
 
@@ -46,7 +43,6 @@ class Covid::Scraper
         countries = atags.map do |country|
             country.text
         end
-        countries
     end
 
 

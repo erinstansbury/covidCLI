@@ -17,7 +17,7 @@ class Covid::CLI
             drill_down
             prompt
         elsif input == "menu"
-            menu
+            prompt
         else input == "exit"
             goodbye
         end
