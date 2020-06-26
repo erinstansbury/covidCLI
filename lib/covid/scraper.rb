@@ -37,9 +37,7 @@ class Covid::Scraper
     end
 
     def self.scrape_countries
-        url = Nokogiri::HTML(open('https://www.worldometers.info/coronavirus/#countries'))
-
-        atags = url.css('a.mt_a')
+        atags = @doc.css('a.mt_a')
         countries = atags.map do |country|
             country.text
         end
