@@ -51,7 +51,6 @@ class Covid::CLI
             prompt
         elsif input == "top"
             top_ten
-            prompt
         else input == "exit"
             goodbye
         end
@@ -70,7 +69,6 @@ class Covid::CLI
             prompt
         elsif input == "top"
             top_ten
-            prompt
         else input == "exit"
             goodbye
         end
@@ -90,13 +88,31 @@ class Covid::CLI
         puts "* * Wash your hands and remember we are all in this together! * *".light_magenta
     end
 
+    def self.sorted
+        country = Covid::Countries.top_sorted
+        country.each do |country|
+            puts "   -".red + " #{country}"
+         end
+
+    end
+
     def self.top_ten
         puts "The top 10 countries with the most confirmed cases are:"
         country = Covid::Countries.top
         country.each.with_index(1) do |country, i|
-           puts "#{i}.".red + " #{country}"
+           puts "   #{i}.".red + " #{country}"
         end
         puts ""
+        puts "To sort the top countries alphabetically, type 'sort' or 'menu' to return the menu"
+        input = gets.strip.downcase
+        if input == "sort"
+            sorted
+            prompt
+        elsif input == "menu"
+            menu
+        else input == "exit"
+            goodbye
+        end
     end
 
 
